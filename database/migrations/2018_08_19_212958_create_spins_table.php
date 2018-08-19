@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePocketsTable extends Migration
+class CreateSpinsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreatePocketsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pockets', function (Blueprint $table) {
+        Schema::create('spins', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('color', ['black', 'red', 'green']);
-            $table->unsignedSmallInteger('number');
-            $table->unsignedSmallInteger('row');
-            $table->unsignedSmallInteger('column');
+            $table->boolean('closed')->default(false);
+            $table->timestamps();
         });
     }
 
@@ -29,6 +27,6 @@ class CreatePocketsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pockets');
+        Schema::dropIfExists('spins');
     }
 }
