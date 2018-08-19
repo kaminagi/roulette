@@ -15,7 +15,10 @@ class CreatePocketsTable extends Migration
     {
         Schema::create('pockets', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->enum('color', ['black', 'red', 'green']);
+            $table->unsignedSmallInteger('number');
+            $table->unsignedSmallInteger('row');
+            $table->unsignedSmallInteger('column');
         });
     }
 
